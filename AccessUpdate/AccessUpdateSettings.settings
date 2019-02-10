@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AccessUpdate" GeneratedClassName="AccessUpdateSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="EDPred" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">EDPred</Value>
+    </Setting>
+    <Setting Name="EDTest" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">EDTest</Value>
+    </Setting>
+    <Setting Name="EDProd" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">EDProd</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
