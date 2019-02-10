@@ -77,6 +77,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessUpdateSettings.cs" />
+    <Compile Include="AccessUpdateSettings.Designer.cs">
+      <DependentUpon>AccessUpdateSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExcelData.cs" />
     <Compile Include="AccessUpdate.cs">
       <SubType>Form</SubType>
