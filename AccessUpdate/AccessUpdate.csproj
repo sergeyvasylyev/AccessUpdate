@@ -77,10 +77,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessUpdateSettings.cs" />
-    <Compile Include="AccessUpdateSettings.Designer.cs">
-      <DependentUpon>AccessUpdateSettings.cs</DependentUpon>
-    </Compile>
     <Compile Include="ExcelData.cs" />
     <Compile Include="AccessUpdate.cs">
       <SubType>Form</SubType>
@@ -112,6 +108,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="AccessUpdate.config" />
+    <None Include="appSettings.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
