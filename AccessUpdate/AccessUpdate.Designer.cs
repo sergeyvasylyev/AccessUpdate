@@ -112,6 +112,15 @@
             this.Use = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClearDuplicates = new System.Windows.Forms.TabPage();
+            this.radioButtonClearDuplicatesInvoicing = new System.Windows.Forms.RadioButton();
+            this.radioButtonClearDuplicatesTRM = new System.Windows.Forms.RadioButton();
+            this.radioButtonClearDuplicatesED = new System.Windows.Forms.RadioButton();
+            this.buttonClearDuplicates = new System.Windows.Forms.Button();
+            this.labelClearDuplicatesRowCount = new System.Windows.Forms.Label();
+            this.dataGridViewClearDuplicates = new System.Windows.Forms.DataGridView();
+            this.buttonValidateClearDuplicates = new System.Windows.Forms.Button();
+            this.groupBoxClearDuplicates = new System.Windows.Forms.GroupBox();
             this.Settings = new System.Windows.Forms.TabPage();
             this.webBrowserTRM = new System.Windows.Forms.WebBrowser();
             this.label38 = new System.Windows.Forms.Label();
@@ -158,15 +167,8 @@
             this.numericUpDownLoginCollumnNumber = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.numericUpDownCountPFI = new System.Windows.Forms.NumericUpDown();
-            this.ClearDuplicates = new System.Windows.Forms.TabPage();
-            this.buttonClearDuplicates = new System.Windows.Forms.Button();
-            this.labelClearDuplicatesRowCount = new System.Windows.Forms.Label();
-            this.dataGridViewClearDuplicates = new System.Windows.Forms.DataGridView();
-            this.buttonValidateClearDuplicates = new System.Windows.Forms.Button();
-            this.groupBoxClearDuplicates = new System.Windows.Forms.GroupBox();
-            this.radioButtonClearDuplicatesInvoicing = new System.Windows.Forms.RadioButton();
-            this.radioButtonClearDuplicatesTRM = new System.Windows.Forms.RadioButton();
-            this.radioButtonClearDuplicatesED = new System.Windows.Forms.RadioButton();
+            this.radioButtonNonContext = new System.Windows.Forms.RadioButton();
+            this.labelVersion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSourceData)).BeginInit();
             this.tabControlActions.SuspendLayout();
             this.SourceData.SuspendLayout();
@@ -183,6 +185,8 @@
             this.TerminatedEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTerminatedToDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTerminated)).BeginInit();
+            this.ClearDuplicates.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClearDuplicates)).BeginInit();
             this.Settings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownConTimeout)).BeginInit();
             this.groupBoxAuthorization.SuspendLayout();
@@ -197,8 +201,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRoleCollumnNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLoginCollumnNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCountPFI)).BeginInit();
-            this.ClearDuplicates.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClearDuplicates)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -350,26 +352,6 @@
             // 
             this.comboBoxNewRoleName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBoxNewRoleName.FormattingEnabled = true;
-            this.comboBoxNewRoleName.Items.AddRange(new object[] {
-            "SE Manager",
-            "SE Manager Extended",
-            "BU manager",
-            "BU manager without notifications",
-            "BU administrator",
-            "ViewRole",
-            "OPR Manager",
-            "OPR viewer",
-            "DataReader",
-            "FBUTreeViewer",
-            "FBUViewer",
-            "Payment Forecaster",
-            "Project Viewer",
-            "Project Manager",
-            "Manager",
-            "Manager delegated",
-            "am",
-            "pm",
-            "osresponsible"});
             this.comboBoxNewRoleName.Location = new System.Drawing.Point(436, 436);
             this.comboBoxNewRoleName.Name = "comboBoxNewRoleName";
             this.comboBoxNewRoleName.Size = new System.Drawing.Size(192, 21);
@@ -1134,8 +1116,117 @@
             this.Status.HeaderText = "Status";
             this.Status.Name = "Status";
             // 
+            // ClearDuplicates
+            // 
+            this.ClearDuplicates.Controls.Add(this.radioButtonClearDuplicatesInvoicing);
+            this.ClearDuplicates.Controls.Add(this.radioButtonClearDuplicatesTRM);
+            this.ClearDuplicates.Controls.Add(this.radioButtonClearDuplicatesED);
+            this.ClearDuplicates.Controls.Add(this.buttonClearDuplicates);
+            this.ClearDuplicates.Controls.Add(this.labelClearDuplicatesRowCount);
+            this.ClearDuplicates.Controls.Add(this.dataGridViewClearDuplicates);
+            this.ClearDuplicates.Controls.Add(this.buttonValidateClearDuplicates);
+            this.ClearDuplicates.Controls.Add(this.groupBoxClearDuplicates);
+            this.ClearDuplicates.Location = new System.Drawing.Point(4, 22);
+            this.ClearDuplicates.Name = "ClearDuplicates";
+            this.ClearDuplicates.Size = new System.Drawing.Size(1233, 492);
+            this.ClearDuplicates.TabIndex = 8;
+            this.ClearDuplicates.Text = "Clear Duplicates";
+            this.ClearDuplicates.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonClearDuplicatesInvoicing
+            // 
+            this.radioButtonClearDuplicatesInvoicing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.radioButtonClearDuplicatesInvoicing.AutoSize = true;
+            this.radioButtonClearDuplicatesInvoicing.Location = new System.Drawing.Point(638, 469);
+            this.radioButtonClearDuplicatesInvoicing.Name = "radioButtonClearDuplicatesInvoicing";
+            this.radioButtonClearDuplicatesInvoicing.Size = new System.Drawing.Size(68, 17);
+            this.radioButtonClearDuplicatesInvoicing.TabIndex = 25;
+            this.radioButtonClearDuplicatesInvoicing.TabStop = true;
+            this.radioButtonClearDuplicatesInvoicing.Text = "Invoicing";
+            this.radioButtonClearDuplicatesInvoicing.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonClearDuplicatesTRM
+            // 
+            this.radioButtonClearDuplicatesTRM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.radioButtonClearDuplicatesTRM.AutoSize = true;
+            this.radioButtonClearDuplicatesTRM.Location = new System.Drawing.Point(557, 469);
+            this.radioButtonClearDuplicatesTRM.Name = "radioButtonClearDuplicatesTRM";
+            this.radioButtonClearDuplicatesTRM.Size = new System.Drawing.Size(49, 17);
+            this.radioButtonClearDuplicatesTRM.TabIndex = 24;
+            this.radioButtonClearDuplicatesTRM.TabStop = true;
+            this.radioButtonClearDuplicatesTRM.Text = "TRM";
+            this.radioButtonClearDuplicatesTRM.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonClearDuplicatesED
+            // 
+            this.radioButtonClearDuplicatesED.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.radioButtonClearDuplicatesED.AutoSize = true;
+            this.radioButtonClearDuplicatesED.Location = new System.Drawing.Point(487, 469);
+            this.radioButtonClearDuplicatesED.Name = "radioButtonClearDuplicatesED";
+            this.radioButtonClearDuplicatesED.Size = new System.Drawing.Size(40, 17);
+            this.radioButtonClearDuplicatesED.TabIndex = 23;
+            this.radioButtonClearDuplicatesED.TabStop = true;
+            this.radioButtonClearDuplicatesED.Text = "ED";
+            this.radioButtonClearDuplicatesED.UseVisualStyleBackColor = true;
+            // 
+            // buttonClearDuplicates
+            // 
+            this.buttonClearDuplicates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonClearDuplicates.Location = new System.Drawing.Point(248, 463);
+            this.buttonClearDuplicates.Name = "buttonClearDuplicates";
+            this.buttonClearDuplicates.Size = new System.Drawing.Size(75, 23);
+            this.buttonClearDuplicates.TabIndex = 38;
+            this.buttonClearDuplicates.Text = "Delete";
+            this.buttonClearDuplicates.UseVisualStyleBackColor = true;
+            this.buttonClearDuplicates.Click += new System.EventHandler(this.buttonClearDuplicates_Click);
+            // 
+            // labelClearDuplicatesRowCount
+            // 
+            this.labelClearDuplicatesRowCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelClearDuplicatesRowCount.AutoSize = true;
+            this.labelClearDuplicatesRowCount.Location = new System.Drawing.Point(345, 468);
+            this.labelClearDuplicatesRowCount.Name = "labelClearDuplicatesRowCount";
+            this.labelClearDuplicatesRowCount.Size = new System.Drawing.Size(59, 13);
+            this.labelClearDuplicatesRowCount.TabIndex = 37;
+            this.labelClearDuplicatesRowCount.Text = "Total rows:";
+            // 
+            // dataGridViewClearDuplicates
+            // 
+            this.dataGridViewClearDuplicates.AllowUserToAddRows = false;
+            this.dataGridViewClearDuplicates.AllowUserToDeleteRows = false;
+            this.dataGridViewClearDuplicates.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewClearDuplicates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewClearDuplicates.Location = new System.Drawing.Point(6, 6);
+            this.dataGridViewClearDuplicates.Name = "dataGridViewClearDuplicates";
+            this.dataGridViewClearDuplicates.Size = new System.Drawing.Size(1221, 451);
+            this.dataGridViewClearDuplicates.TabIndex = 35;
+            // 
+            // buttonValidateClearDuplicates
+            // 
+            this.buttonValidateClearDuplicates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonValidateClearDuplicates.Location = new System.Drawing.Point(7, 463);
+            this.buttonValidateClearDuplicates.Name = "buttonValidateClearDuplicates";
+            this.buttonValidateClearDuplicates.Size = new System.Drawing.Size(75, 23);
+            this.buttonValidateClearDuplicates.TabIndex = 36;
+            this.buttonValidateClearDuplicates.Text = "Validate";
+            this.buttonValidateClearDuplicates.UseVisualStyleBackColor = true;
+            this.buttonValidateClearDuplicates.Click += new System.EventHandler(this.buttonValidateClearDuplicates_Click);
+            // 
+            // groupBoxClearDuplicates
+            // 
+            this.groupBoxClearDuplicates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBoxClearDuplicates.Location = new System.Drawing.Point(479, 456);
+            this.groupBoxClearDuplicates.Name = "groupBoxClearDuplicates";
+            this.groupBoxClearDuplicates.Size = new System.Drawing.Size(242, 34);
+            this.groupBoxClearDuplicates.TabIndex = 39;
+            this.groupBoxClearDuplicates.TabStop = false;
+            this.groupBoxClearDuplicates.Text = "System to clear duplicates";
+            // 
             // Settings
             // 
+            this.Settings.Controls.Add(this.labelVersion);
             this.Settings.Controls.Add(this.webBrowserTRM);
             this.Settings.Controls.Add(this.label38);
             this.Settings.Controls.Add(this.buttonFinReportOutput);
@@ -1289,6 +1380,7 @@
             // 
             // groupBoxAccessType
             // 
+            this.groupBoxAccessType.Controls.Add(this.radioButtonNonContext);
             this.groupBoxAccessType.Controls.Add(this.radioButtonAccessTypeMBU);
             this.groupBoxAccessType.Controls.Add(this.radioButtonAccessTypeProject);
             this.groupBoxAccessType.Controls.Add(this.radioButtonAccessTypeFBU);
@@ -1593,120 +1685,32 @@
             this.numericUpDownCountPFI.Size = new System.Drawing.Size(46, 20);
             this.numericUpDownCountPFI.TabIndex = 18;
             // 
-            // ClearDuplicates
+            // radioButtonNonContext
             // 
-            this.ClearDuplicates.Controls.Add(this.radioButtonClearDuplicatesInvoicing);
-            this.ClearDuplicates.Controls.Add(this.radioButtonClearDuplicatesTRM);
-            this.ClearDuplicates.Controls.Add(this.radioButtonClearDuplicatesED);
-            this.ClearDuplicates.Controls.Add(this.buttonClearDuplicates);
-            this.ClearDuplicates.Controls.Add(this.labelClearDuplicatesRowCount);
-            this.ClearDuplicates.Controls.Add(this.dataGridViewClearDuplicates);
-            this.ClearDuplicates.Controls.Add(this.buttonValidateClearDuplicates);
-            this.ClearDuplicates.Controls.Add(this.groupBoxClearDuplicates);
-            this.ClearDuplicates.Location = new System.Drawing.Point(4, 22);
-            this.ClearDuplicates.Name = "ClearDuplicates";
-            this.ClearDuplicates.Size = new System.Drawing.Size(1233, 492);
-            this.ClearDuplicates.TabIndex = 8;
-            this.ClearDuplicates.Text = "Clear Duplicates";
-            this.ClearDuplicates.UseVisualStyleBackColor = true;
+            this.radioButtonNonContext.AutoSize = true;
+            this.radioButtonNonContext.Location = new System.Drawing.Point(106, 36);
+            this.radioButtonNonContext.Name = "radioButtonNonContext";
+            this.radioButtonNonContext.Size = new System.Drawing.Size(84, 17);
+            this.radioButtonNonContext.TabIndex = 26;
+            this.radioButtonNonContext.TabStop = true;
+            this.radioButtonNonContext.Text = "Non Context";
+            this.radioButtonNonContext.UseVisualStyleBackColor = true;
             // 
-            // buttonClearDuplicates
+            // labelVersion
             // 
-            this.buttonClearDuplicates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonClearDuplicates.Location = new System.Drawing.Point(248, 463);
-            this.buttonClearDuplicates.Name = "buttonClearDuplicates";
-            this.buttonClearDuplicates.Size = new System.Drawing.Size(75, 23);
-            this.buttonClearDuplicates.TabIndex = 38;
-            this.buttonClearDuplicates.Text = "Delete";
-            this.buttonClearDuplicates.UseVisualStyleBackColor = true;
-            this.buttonClearDuplicates.Click += new System.EventHandler(this.buttonClearDuplicates_Click);
+            this.labelVersion.AutoSize = true;
+            this.labelVersion.Location = new System.Drawing.Point(479, 22);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(42, 13);
+            this.labelVersion.TabIndex = 54;
+            this.labelVersion.Text = "Version";
             // 
-            // labelClearDuplicatesRowCount
-            // 
-            this.labelClearDuplicatesRowCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelClearDuplicatesRowCount.AutoSize = true;
-            this.labelClearDuplicatesRowCount.Location = new System.Drawing.Point(345, 468);
-            this.labelClearDuplicatesRowCount.Name = "labelClearDuplicatesRowCount";
-            this.labelClearDuplicatesRowCount.Size = new System.Drawing.Size(59, 13);
-            this.labelClearDuplicatesRowCount.TabIndex = 37;
-            this.labelClearDuplicatesRowCount.Text = "Total rows:";
-            // 
-            // dataGridViewClearDuplicates
-            // 
-            this.dataGridViewClearDuplicates.AllowUserToAddRows = false;
-            this.dataGridViewClearDuplicates.AllowUserToDeleteRows = false;
-            this.dataGridViewClearDuplicates.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewClearDuplicates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewClearDuplicates.Location = new System.Drawing.Point(6, 6);
-            this.dataGridViewClearDuplicates.Name = "dataGridViewClearDuplicates";
-            this.dataGridViewClearDuplicates.Size = new System.Drawing.Size(1221, 451);
-            this.dataGridViewClearDuplicates.TabIndex = 35;
-            // 
-            // buttonValidateClearDuplicates
-            // 
-            this.buttonValidateClearDuplicates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonValidateClearDuplicates.Location = new System.Drawing.Point(7, 463);
-            this.buttonValidateClearDuplicates.Name = "buttonValidateClearDuplicates";
-            this.buttonValidateClearDuplicates.Size = new System.Drawing.Size(75, 23);
-            this.buttonValidateClearDuplicates.TabIndex = 36;
-            this.buttonValidateClearDuplicates.Text = "Validate";
-            this.buttonValidateClearDuplicates.UseVisualStyleBackColor = true;
-            this.buttonValidateClearDuplicates.Click += new System.EventHandler(this.buttonValidateClearDuplicates_Click);
-            // 
-            // groupBoxClearDuplicates
-            // 
-            this.groupBoxClearDuplicates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBoxClearDuplicates.Location = new System.Drawing.Point(479, 456);
-            this.groupBoxClearDuplicates.Name = "groupBoxClearDuplicates";
-            this.groupBoxClearDuplicates.Size = new System.Drawing.Size(242, 34);
-            this.groupBoxClearDuplicates.TabIndex = 39;
-            this.groupBoxClearDuplicates.TabStop = false;
-            this.groupBoxClearDuplicates.Text = "System to clear duplicates";
-            // 
-            // radioButtonClearDuplicatesInvoicing
-            // 
-            this.radioButtonClearDuplicatesInvoicing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.radioButtonClearDuplicatesInvoicing.AutoSize = true;
-            this.radioButtonClearDuplicatesInvoicing.Location = new System.Drawing.Point(638, 469);
-            this.radioButtonClearDuplicatesInvoicing.Name = "radioButtonClearDuplicatesInvoicing";
-            this.radioButtonClearDuplicatesInvoicing.Size = new System.Drawing.Size(68, 17);
-            this.radioButtonClearDuplicatesInvoicing.TabIndex = 25;
-            this.radioButtonClearDuplicatesInvoicing.TabStop = true;
-            this.radioButtonClearDuplicatesInvoicing.Text = "Invoicing";
-            this.radioButtonClearDuplicatesInvoicing.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonClearDuplicatesTRM
-            // 
-            this.radioButtonClearDuplicatesTRM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.radioButtonClearDuplicatesTRM.AutoSize = true;
-            this.radioButtonClearDuplicatesTRM.Location = new System.Drawing.Point(557, 469);
-            this.radioButtonClearDuplicatesTRM.Name = "radioButtonClearDuplicatesTRM";
-            this.radioButtonClearDuplicatesTRM.Size = new System.Drawing.Size(49, 17);
-            this.radioButtonClearDuplicatesTRM.TabIndex = 24;
-            this.radioButtonClearDuplicatesTRM.TabStop = true;
-            this.radioButtonClearDuplicatesTRM.Text = "TRM";
-            this.radioButtonClearDuplicatesTRM.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonClearDuplicatesED
-            // 
-            this.radioButtonClearDuplicatesED.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.radioButtonClearDuplicatesED.AutoSize = true;
-            this.radioButtonClearDuplicatesED.Location = new System.Drawing.Point(487, 469);
-            this.radioButtonClearDuplicatesED.Name = "radioButtonClearDuplicatesED";
-            this.radioButtonClearDuplicatesED.Size = new System.Drawing.Size(40, 17);
-            this.radioButtonClearDuplicatesED.TabIndex = 23;
-            this.radioButtonClearDuplicatesED.TabStop = true;
-            this.radioButtonClearDuplicatesED.Text = "ED";
-            this.radioButtonClearDuplicatesED.UseVisualStyleBackColor = true;
-            // 
-            // Form1
+            // AccessUpdate
             // 
             this.ClientSize = new System.Drawing.Size(1242, 521);
             this.Controls.Add(this.tabControlActions);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "AccessUpdate";
             this.Text = "Access validation";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -1734,6 +1738,9 @@
             this.TerminatedEmployees.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTerminatedToDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTerminated)).EndInit();
+            this.ClearDuplicates.ResumeLayout(false);
+            this.ClearDuplicates.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClearDuplicates)).EndInit();
             this.Settings.ResumeLayout(false);
             this.Settings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownConTimeout)).EndInit();
@@ -1754,9 +1761,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRoleCollumnNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLoginCollumnNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCountPFI)).EndInit();
-            this.ClearDuplicates.ResumeLayout(false);
-            this.ClearDuplicates.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClearDuplicates)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1901,6 +1905,8 @@
         private System.Windows.Forms.RadioButton radioButtonClearDuplicatesTRM;
         private System.Windows.Forms.RadioButton radioButtonClearDuplicatesED;
         private System.Windows.Forms.GroupBox groupBoxClearDuplicates;
+        private System.Windows.Forms.RadioButton radioButtonNonContext;
+        private System.Windows.Forms.Label labelVersion;
     }
 }
 

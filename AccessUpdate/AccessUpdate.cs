@@ -87,6 +87,10 @@ namespace AccessUpdate
             comboBoxAllrightsConnection.Items.Add(config.AppSettings.Settings["AlRTest"].Value);
             comboBoxAllrightsConnection.SelectedIndex = 0;
 
+            int RolesCount = Convert.ToInt32(config.AppSettings.Settings["Roles_count"].Value);
+            for (int i = 1; i <= RolesCount; i++)
+            comboBoxNewRoleName.Items.Add(config.AppSettings.Settings["Roles_" + i.ToString("D2")].Value);
+
             comboBoxSystemName.Items.Add("ED");
             comboBoxSystemName.Items.Add("TRM");
             comboBoxSystemName.Items.Add("Invoicing");
@@ -121,9 +125,19 @@ namespace AccessUpdate
             this.dataGridViewTerminatedToDelete.Rows.Add(true, "4 Delete Invoicing principals");
 
             numericUpDownConTimeout.Value = 300;
-            
+
+            labelVersion.Text = "Version 0.1.2";
+
+            /*
+             * v0.1.1
+             * 1. version added
+             * 2. Non context permissions
+             * 3. move roles to appSettings.config
+             */
+
             SetAccessContext();
-            UpdateWebPage();
+            UpdateWebPage();            
+
         }
 
         private void comboBoxAllrightsConnection_SelectedIndexChanged(object sender, EventArgs e)
@@ -240,6 +254,10 @@ namespace AccessUpdate
             if (radioButtonAccessTypeMBU.Checked == true)
             {
                 ContextType = "MBU";
+            }
+            if (radioButtonNonContext.Checked == true)
+            {
+                ContextType = "Non Context";
             }
             labelAccessContext.Text = "Access context: " + ContextType;
         }
@@ -562,14 +580,42 @@ namespace AccessUpdate
                     if (checkBoxFBUManagerOnlyActiveEmployees.Checked == true)
                     { OnlyActiveEmployees = "and Employee.active = 1"; }
                     SQLRequestData = SQLRequestData.Replace("#OnlyActiveEmployees", OnlyActiveEmployees);
+                    if (radioButtonNonContext.Checked == true)
+                    {
+                        SQLRequestData = SQLRequestData.Replace("and FBUExist.FBU is not null", "");
+                        SQLRequestData = SQLRequestData.Replace("and BusinessUnit.name in (select Context from #TempAccess as TempAccess)"
+                                                                , "");
+                        SQLRequestData = SQLRequestData.Replace("and ExistingAccess.FBU = TempAccess.Context"
+                                                                , "");
+                    }
                     break;
                 case "CurrentAccess":
                     SQLRequestData = SQLQueriesTemplates.SQLCurrentAccess().Replace("#DatabaseToUse", DatabaseToUse);
                     SQLRequestData = SQLRequestData.Replace("#SDRequestToUse", textBoxSDRequest.Text);
+                    if (radioButtonNonContext.Checked == true)
+                    {
+                        
+                        SQLRequestData = SQLRequestData.Replace(",isnull(ExistingPHE.EntityTypeId,EntityType.id) as EntityTypeId"
+                                                              , ",'00000000-0000-0000-0000-000000000000' as EntityTypeId");
+                        SQLRequestData = SQLRequestData.Replace("and FBUExist.FBU is not null", "");
+                        SQLRequestData = SQLRequestData.Replace("and SecurityEntityId != '00000000-0000-0000-0000-000000000000'"
+                                                              , "and (SecurityEntityId != '00000000-0000-0000-0000-000000000000' or SecurityEntityId is NULL)");
+                        SQLRequestData = SQLRequestData.Replace("and BusinessUnit.name in (select Context from #TempAccess as TempAccess)"
+                                                                , "");
+                        SQLRequestData = SQLRequestData.Replace("and ExistingAccess.FBU = TempAccess.Context"
+                                                                ,"");
+
+
+                    }
                     break;
                 case "CurrentAccessToDelete":
                     SQLRequestData = SQLQueriesTemplates.SQLCurrentAccessToDelete().Replace("#DatabaseToUse", DatabaseToUse);
                     SQLRequestData = SQLRequestData.Replace("#SDRequestToUse", textBoxSDRequest.Text);
+                    if (radioButtonNonContext.Checked == true)
+                    {
+                        SQLRequestData = SQLRequestData.Replace("and FBUExist.FBU   = TempAccess2.Context"
+                                                            , "");
+                    }
                     break;
                 case "CurrentAccessSource":
                     SQLRequestData = SQLQueriesTemplates.SQLCurrentAccessPrincipal().Replace("#DatabaseToUse", DatabaseToUse);
@@ -615,7 +661,8 @@ namespace AccessUpdate
             SQLRequestData = SQLRequestData.Replace("#ValuesToInsert", ValidateData);
 
             //Access type context
-            if (radioButtonAccessTypeFBU.Checked == true)
+            if (radioButtonAccessTypeFBU.Checked == true
+                || radioButtonNonContext.Checked == true)
             {
                 SQLRequestData = SQLRequestData.Replace("#BusinessUnitTableName", SystemSettingsData.BusinessUnitTableName);
                 SQLRequestData = SQLRequestData.Replace("#EntityTypeName", SystemSettingsData.EntityTypeNameFBU);

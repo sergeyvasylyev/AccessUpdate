@@ -125,7 +125,8 @@ namespace AccessUpdate
                                         textWritter.WriteStartElement("d4p1:FilterItems");
                                     }
                                 }
-                                if (rowItems["EntityTypeId"].ToString() != "")
+                                if (rowItems["EntityTypeId"].ToString() != ""
+                                    && rowItems["EntityTypeId"].ToString() != "00000000-0000-0000-0000-000000000000")
                                 {
                                     textWritter.WriteStartElement("d4p1:PermissionFilterItemStrictDTO");
                                     textWritter.WriteStartElement("d4p1:EntityType");
